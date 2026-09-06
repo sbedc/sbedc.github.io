@@ -1,0 +1,992 @@
+```html
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>کانون نخبه‌پروری شهید بهشتی (ره)</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap');
+
+        :root {
+            --bg: #060912;
+            --bg2: #0b1020;
+            --card: rgba(255,255,255,.055);
+            --border: rgba(255,255,255,.11);
+            --text: #f5f7ff;
+            --muted: #9ba4bb;
+            --primary: #6c63ff;
+            --secondary: #00d4ff;
+            --accent: #a855f7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Vazirmatn", sans-serif;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(108,99,255,.15), transparent 30%),
+                radial-gradient(circle at 85% 15%, rgba(0,212,255,.10), transparent 30%),
+                radial-gradient(circle at 50% 100%, rgba(168,85,247,.10), transparent 35%),
+                var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* ---------- Background ---------- */
+
+        .background {
+            position: fixed;
+            inset: 0;
+            z-index: -10;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .grid {
+            position: absolute;
+            inset: 0;
+            opacity: .18;
+            background-image:
+                linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+            background-size: 55px 55px;
+            mask-image: linear-gradient(to bottom, black, transparent 90%);
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: .3;
+            animation: float 12s ease-in-out infinite;
+        }
+
+        .orb.one {
+            width: 350px;
+            height: 350px;
+            background: #635bff;
+            top: -120px;
+            right: -100px;
+        }
+
+        .orb.two {
+            width: 300px;
+            height: 300px;
+            background: #00c8ff;
+            left: -100px;
+            top: 35%;
+            animation-delay: -4s;
+        }
+
+        .orb.three {
+            width: 300px;
+            height: 300px;
+            background: #a855f7;
+            right: 25%;
+            bottom: -180px;
+            animation-delay: -7s;
+        }
+
+        @keyframes float {
+            0%,100% { transform: translate(0,0) scale(1); }
+            50% { transform: translate(30px,-30px) scale(1.08); }
+        }
+
+        /* ---------- Navigation ---------- */
+
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(1100px, calc(100% - 30px));
+            padding: 12px 18px;
+            border: 1px solid var(--border);
+            background: rgba(7,10,20,.65);
+            backdrop-filter: blur(20px);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 100;
+            box-shadow: 0 15px 50px rgba(0,0,0,.25);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+        }
+
+        .brand-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            box-shadow: 0 0 25px rgba(108,99,255,.35);
+            font-size: 19px;
+        }
+
+        .brand span {
+            font-size: 14px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #aeb6cb;
+            text-decoration: none;
+            font-size: 13px;
+            transition: .3s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .nav-button {
+            padding: 10px 17px;
+            border-radius: 11px;
+            color: white;
+            text-decoration: none;
+            font-size: 13px;
+            background: rgba(255,255,255,.07);
+            border: 1px solid var(--border);
+            transition: .3s;
+        }
+
+        .nav-button:hover {
+            background: rgba(255,255,255,.12);
+            transform: translateY(-2px);
+        }
+
+        /* ---------- Hero ---------- */
+
+        .hero {
+            min-height: 100vh;
+            width: min(1150px, calc(100% - 35px));
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            border: 1px solid rgba(108,99,255,.3);
+            background: rgba(108,99,255,.08);
+            color: #b9b5ff;
+            border-radius: 100px;
+            font-size: 12px;
+            margin-bottom: 25px;
+            animation: appear .8s ease forwards;
+        }
+
+        .badge-dot {
+            width: 7px;
+            height: 7px;
+            background: #6dffbd;
+            border-radius: 50%;
+            box-shadow: 0 0 12px #6dffbd;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 7vw, 78px);
+            line-height: 1.15;
+            font-weight: 900;
+            letter-spacing: -2px;
+            margin-bottom: 18px;
+            background: linear-gradient(
+                100deg,
+                #ffffff 10%,
+                #bcb8ff 45%,
+                #70e8ff 80%
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero h2 {
+            font-size: clamp(17px, 2vw, 23px);
+            font-weight: 400;
+            color: #aeb7ca;
+            margin-bottom: 35px;
+        }
+
+        .hero h2 strong {
+            color: white;
+            font-weight: 600;
+        }
+
+        .hero-description {
+            color: #818ba4;
+            max-width: 650px;
+            margin: auto;
+            line-height: 2;
+            font-size: 14px;
+        }
+
+        .hero-buttons {
+            margin-top: 38px;
+            display: flex;
+            justify-content: center;
+            gap: 13px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 24px;
+            border-radius: 13px;
+            text-decoration: none;
+            color: white;
+            font-size: 13px;
+            transition: .3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6c63ff, #4f9cff);
+            box-shadow: 0 10px 35px rgba(108,99,255,.28);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 45px rgba(108,99,255,.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,.055);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,.1);
+            transform: translateY(-4px);
+        }
+
+        /* ---------- Floating symbols ---------- */
+
+        .floating {
+            position: absolute;
+            border: 1px solid rgba(255,255,255,.08);
+            background: rgba(255,255,255,.025);
+            backdrop-filter: blur(10px);
+            border-radius: 18px;
+            padding: 15px;
+            color: rgba(255,255,255,.35);
+            animation: floatCard 5s ease-in-out infinite;
+        }
+
+        .floating.one {
+            top: 30%;
+            right: 4%;
+        }
+
+        .floating.two {
+            top: 43%;
+            left: 3%;
+            animation-delay: -2s;
+        }
+
+        .floating.three {
+            bottom: 18%;
+            right: 10%;
+            animation-delay: -3s;
+        }
+
+        @keyframes floatCard {
+            0%,100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-14px) rotate(2deg); }
+        }
+
+        /* ---------- Sections ---------- */
+
+        section {
+            width: min(1100px, calc(100% - 35px));
+            margin: auto;
+            padding: 100px 0;
+        }
+
+        .section-heading {
+            margin-bottom: 45px;
+        }
+
+        .section-label {
+            color: #7770ff;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(28px, 4vw, 42px);
+            margin-bottom: 10px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* ---------- Cards ---------- */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 17px;
+        }
+
+        .card {
+            position: relative;
+            overflow: hidden;
+            padding: 30px;
+            border: 1px solid var(--border);
+            border-radius: 23px;
+            background: linear-gradient(
+                145deg,
+                rgba(255,255,255,.07),
+                rgba(255,255,255,.025)
+            );
+            backdrop-filter: blur(15px);
+            transition: .4s;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            background: var(--primary);
+            filter: blur(90px);
+            opacity: 0;
+            top: -100px;
+            right: -100px;
+            transition: .5s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(130,125,255,.35);
+            box-shadow: 0 20px 60px rgba(0,0,0,.25);
+        }
+
+        .card:hover::before {
+            opacity: .25;
+        }
+
+        .icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 16px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(
+                135deg,
+                rgba(108,99,255,.2),
+                rgba(0,212,255,.08)
+            );
+            border: 1px solid rgba(108,99,255,.18);
+            font-size: 24px;
+            margin-bottom: 25px;
+        }
+
+        .card h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #858fa6;
+            font-size: 13px;
+            line-height: 2;
+        }
+
+        /* ---------- Vision ---------- */
+
+        .vision {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .vision-box {
+            padding: 40px;
+            border: 1px solid var(--border);
+            border-radius: 25px;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(108,99,255,.10),
+                    rgba(0,212,255,.035)
+                );
+        }
+
+        .vision-box h3 {
+            font-size: 25px;
+            margin-bottom: 18px;
+        }
+
+        .vision-box p {
+            color: #9099af;
+            line-height: 2.2;
+            font-size: 14px;
+        }
+
+        .quote {
+            border-right: 3px solid #7068ff;
+            padding-right: 20px;
+            margin-top: 25px;
+            color: #c5c9d5;
+            font-size: 13px;
+            line-height: 2;
+        }
+
+        /* ---------- Stats ---------- */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 30px 15px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,.035);
+        }
+
+        .stat-number {
+            font-size: 35px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, #8b84ff);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .stat-title {
+            color: #7e879b;
+            font-size: 12px;
+            margin-top: 7px;
+        }
+
+        /* ---------- CTA ---------- */
+
+        .cta {
+            text-align: center;
+            padding: 90px 30px;
+            border: 1px solid rgba(108,99,255,.2);
+            border-radius: 30px;
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(108,99,255,.14),
+                    transparent 65%
+                ),
+                rgba(255,255,255,.025);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .cta h2 {
+            font-size: clamp(27px, 4vw, 45px);
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            color: #8b94aa;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        /* ---------- Footer ---------- */
+
+        footer {
+            width: min(1100px, calc(100% - 35px));
+            margin: auto;
+            padding: 30px 0 45px;
+            border-top: 1px solid rgba(255,255,255,.07);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #626b80;
+            font-size: 11px;
+        }
+
+        footer strong {
+            color: #a1a8b9;
+        }
+
+        /* ---------- Reveal Animation ---------- */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 1s cubic-bezier(.2,.7,.2,1);
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ---------- Responsive ---------- */
+
+        @media(max-width: 800px) {
+            .nav-links {
+                display: none;
+            }
+
+            nav {
+                padding: 10px 12px;
+            }
+
+            .hero {
+                padding-top: 110px;
+            }
+
+            .floating {
+                display: none;
+            }
+
+            .cards,
+            .vision {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            section {
+                padding: 75px 0;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+
+        @media(max-width: 450px) {
+            .hero h1 {
+                letter-spacing: -1px;
+            }
+
+            .hero-description {
+                font-size: 13px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="background">
+    <div class="grid"></div>
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+    <div class="orb three"></div>
+</div>
+
+<!-- Navigation -->
+<nav>
+    <div class="brand">
+        <div class="brand-icon">✦</div>
+        <span>کانون نخبه‌پروری شهید بهشتی</span>
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="#about">درباره ما</a></li>
+        <li><a href="#activities">فعالیت‌ها</a></li>
+        <li><a href="#vision">چشم‌انداز</a></li>
+    </ul>
+
+    <a href="#contact" class="nav-button">ارتباط با ما</a>
+</nav>
+
+
+<!-- Hero -->
+<header class="hero">
+
+    <div class="floating one">◈</div>
+    <div class="floating two">⌬</div>
+    <div class="floating three">✧</div>
+
+    <div class="hero-content">
+
+        <div class="badge">
+            <span class="badge-dot"></span>
+            بستری برای رشد، اندیشه و شکوفایی
+        </div>
+
+        <h1>
+            کانون نخبه‌پروری<br>
+            شهید بهشتی (ره)
+        </h1>
+
+        <h2>
+            زیر نظر <strong>پایگاه بسیج شهید بهشتی (ره)</strong>
+        </h2>
+
+        <p class="hero-description">
+            جایی برای کشف استعدادها، پرورش ایده‌ها و ساختن نسلی
+            توانمند، خلاق و اثرگذار؛
+            با تکیه بر دانش، تجربه، خلاقیت و کار گروهی.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#about" class="btn btn-primary">
+                آشنایی با کانون
+                <span>←</span>
+            </a>
+
+            <a href="#activities" class="btn btn-secondary">
+                حوزه‌های فعالیت
+            </a>
+        </div>
+
+    </div>
+</header>
+
+
+<!-- About -->
+<section id="about">
+
+    <div class="section-heading reveal">
+        <div class="section-label">ABOUT US</div>
+        <h2>ایده‌ها، آغاز یک مسیرند.</h2>
+        <p>
+            ما تلاش می‌کنیم مسیر رشد استعدادها را هموار کنیم.
+        </p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card reveal">
+            <div class="icon">◉</div>
+            <h3>استعدادیابی</h3>
+            <p>
+                شناسایی ظرفیت‌ها و استعدادهای جوانان و فراهم کردن
+                زمینه‌ای مناسب برای رشد و شکوفایی آن‌ها.
+            </p>
+        </div>
+
+        <div class="card reveal">
+            <div class="icon">◇</div>
+            <h3>نخبه‌پروری</h3>
+            <p>
+                ایجاد محیطی پویا برای پرورش تفکر، مهارت، خلاقیت
+                و توانمندی‌های فردی و اجتماعی.
+            </p>
+        </div>
+
+        <div class="card reveal">
+            <div class="icon">✦</div>
+            <h3>اثرگذاری</h3>
+            <p>
+                تبدیل دانش و استعداد به ایده‌های کاربردی و
+                حرکت در مسیر حل مسائل و ساختن آینده.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Activities -->
+<section id="activities">
+
+    <div class="section-heading reveal">
+        <div class="section-label">ACTIVITIES</div>
+        <h2>مسیرهایی برای رشد</h2>
+        <p>
+            بستری برای یادگیری، تجربه و ساختن.
+        </p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card reveal">
+            <div class="icon">⌁</div>
+            <h3>آموزش و مهارت</h3>
+            <p>
+                برگزاری دوره‌ها، کارگاه‌ها و برنامه‌های آموزشی
+                با تمرکز بر مهارت‌های کاربردی و تخصصی.
+            </p>
+        </div>
+
+        <div class="card reveal">
+            <div class="icon">⚡</div>
+            <h3>خلاقیت و نوآوری</h3>
+            <p>
+                حمایت از ایده‌های نو و ایجاد فضای مناسب برای
+                تجربه، آزمون و ساخت راه‌حل‌های جدید.
+            </p>
+        </div>
+
+        <div class="card reveal">
+            <div class="icon">∞</div>
+            <h3>کار تیمی</h3>
+            <p>
+                تشکیل تیم‌های توانمند و تقویت فرهنگ همکاری،
+                مسئولیت‌پذیری و حل مسئله.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Vision -->
+<section id="vision">
+
+    <div class="vision">
+
+        <div class="vision-box reveal">
+            <h3>چشم‌انداز ما</h3>
+
+            <p>
+                ساختن محیطی که در آن هر استعداد فرصت دیده شدن،
+                رشد کردن و اثر گذاشتن داشته باشد.
+            </p>
+
+            <div class="quote">
+                «آینده را کسانی می‌سازند که امروز برای ساختنش
+                قدم برمی‌دارند.»
+            </div>
+        </div>
+
+        <div class="vision-box reveal">
+            <h3>نگاه ما</h3>
+
+            <p>
+                نخبه بودن فقط به داشتن دانش بیشتر محدود نمی‌شود؛
+                بلکه ترکیبی از اندیشه، مهارت، مسئولیت‌پذیری،
+                خلاقیت و توانایی اثرگذاری است.
+            </p>
+
+            <div class="quote">
+                اندیشه → مهارت → تجربه → اثرگذاری
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Stats -->
+<section>
+
+    <div class="stats">
+
+        <div class="stat reveal">
+            <div class="stat-number">01</div>
+            <div class="stat-title">استعداد</div>
+        </div>
+
+        <div class="stat reveal">
+            <div class="stat-number">02</div>
+            <div class="stat-title">آموزش</div>
+        </div>
+
+        <div class="stat reveal">
+            <div class="stat-number">03</div>
+            <div class="stat-title">تجربه</div>
+        </div>
+
+        <div class="stat reveal">
+            <div class="stat-number">∞</div>
+            <div class="stat-title">اثرگذاری</div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+<section id="contact">
+
+    <div class="cta reveal">
+
+        <h2>آینده، از همین‌جا شروع می‌شود.</h2>
+
+        <p>
+            اگر ایده‌ای دارید، استعدادی دارید یا می‌خواهید
+            بخشی از یک مسیر بزرگ‌تر باشید، جای شما اینجاست.
+        </p>
+
+        <a href="#" class="btn btn-primary">
+            شروع یک مسیر تازه
+            <span>←</span>
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- Footer -->
+<footer>
+
+    <div>
+        © ۱۴۰۵ <strong>کانون نخبه‌پروری شهید بهشتی (ره)</strong>
+    </div>
+
+    <div>
+        زیر نظر پایگاه بسیج شهید بهشتی (ره)
+    </div>
+
+</footer>
+
+
+<script>
+
+    /* Scroll Reveal */
+
+    const reveals = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+
+            entries.forEach((entry) => {
+
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+    reveals.forEach((element) => {
+        observer.observe(element);
+    });
+
+
+    /* Mouse Parallax */
+
+    document.addEventListener("mousemove", (event) => {
+
+        const x = (event.clientX / window.innerWidth - .5) * 20;
+        const y = (event.clientY / window.innerHeight - .5) * 20;
+
+        document.querySelector(".orb.one").style.transform =
+            `translate(${x}px, ${y}px)`;
+
+        document.querySelector(".orb.two").style.transform =
+            `translate(${-x * .6}px, ${-y * .6}px)`;
+
+        document.querySelector(".orb.three").style.transform =
+            `translate(${x * .4}px, ${-y * .4}px)`;
+    });
+
+
+    /* Card Tilt */
+
+    document.querySelectorAll(".card").forEach(card => {
+
+        card.addEventListener("mousemove", e => {
+
+            const rect = card.getBoundingClientRect();
+
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const rotateX = ((y / rect.height) - .5) * -5;
+            const rotateY = ((x / rect.width) - .5) * 5;
+
+            card.style.transform =
+                `perspective(700px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+            card.style.transform = "";
+        });
+
+    });
+
+
+    /* Smooth navigation */
+
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+
+        link.addEventListener("click", function(e) {
+
+            const target = document.querySelector(this.getAttribute("href"));
+
+            if (!target) return;
+
+            e.preventDefault();
+
+            target.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        });
+
+    });
+
+</script>
+
+</body>
+</html>
+```
